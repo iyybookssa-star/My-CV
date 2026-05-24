@@ -81,7 +81,6 @@ const SKILLS = [
 
 function CVPage() {
   const cvUrl = `${import.meta.env.BASE_URL}documents/Ibrahim_Alyahya_CV.pdf`;
-  const transcriptUrl = `${import.meta.env.BASE_URL}documents/Ibrahim_Alyahya_Transcript.pdf`;
 
   const profile = useQuery({
     queryKey: ["gh-user", GITHUB_USERNAME],
@@ -122,7 +121,7 @@ function CVPage() {
             <a href="#about" className="hover:text-foreground transition">About</a>
             <a href="#skills" className="hover:text-foreground transition">Skills</a>
             <a href="#experience" className="hover:text-foreground transition">Experience</a>
-            <a href="#documents" className="hover:text-foreground transition">Documents</a>
+            <a href="#documents" className="hover:text-foreground transition">CV</a>
             <a href="#github" className="hover:text-foreground transition">GitHub</a>
             <a href="#contact" className="hover:text-foreground transition">Contact</a>
           </nav>
@@ -261,8 +260,8 @@ function CVPage() {
       </Section>
 
       {/* DOCUMENTS */}
-      <Section id="documents" eyebrow="Documents" title="Credentials & CV">
-        <div className="grid sm:grid-cols-2 gap-6">
+      <Section id="documents" eyebrow="Documents" title="Curriculum Vitae">
+        <div className="max-w-2xl">
           <div className="group card-elevated rounded-2xl p-6 hover:border-primary transition flex flex-col justify-between">
             <div>
               <div className="flex items-center gap-3">
@@ -289,38 +288,6 @@ function CVPage() {
                 download="Ibrahim_Alyahya_CV.pdf"
                 className="inline-flex items-center justify-center rounded-full bg-gradient-primary p-2.5 text-primary-foreground hover:opacity-90 transition"
                 title="Download CV"
-              >
-                <Download className="h-4 w-4" />
-              </a>
-            </div>
-          </div>
-
-          <div className="group card-elevated rounded-2xl p-6 hover:border-primary transition flex flex-col justify-between">
-            <div>
-              <div className="flex items-center gap-3">
-                <div className="h-10 w-10 rounded-xl bg-gradient-primary flex items-center justify-center text-primary-foreground font-semibold">
-                  <GraduationCap className="h-5 w-5" />
-                </div>
-                <h3 className="font-display font-semibold text-lg">Academic Transcript</h3>
-              </div>
-              <p className="mt-3 text-sm text-muted-foreground">
-                My official academic transcript from Imam Abdulrahman bin Faisal University (IAU), majoring in Computer Science.
-              </p>
-            </div>
-            <div className="mt-6 flex gap-3">
-              <a
-                href={transcriptUrl}
-                target="_blank"
-                rel="noreferrer"
-                className="flex-1 inline-flex items-center justify-center gap-2 rounded-full border border-border bg-surface px-5 py-2.5 text-sm font-medium hover:bg-muted transition"
-              >
-                <Eye className="h-4 w-4" /> View PDF
-              </a>
-              <a
-                href={transcriptUrl}
-                download="Ibrahim_Alyahya_Transcript.pdf"
-                className="inline-flex items-center justify-center rounded-full bg-gradient-primary p-2.5 text-primary-foreground hover:opacity-90 transition"
-                title="Download Transcript"
               >
                 <Download className="h-4 w-4" />
               </a>
