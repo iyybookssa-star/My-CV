@@ -12,7 +12,6 @@ import {
   Sparkles,
   MapPin,
 } from "lucide-react";
-import profilePic from "../assets/profile.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -41,7 +40,7 @@ export const Route = createFileRoute("/")({
   component: CVPage,
 });
 
-const GITHUB_USERNAME = "iyybookssa-star";
+const GITHUB_USERNAME = "iyybookssa";
 const EMAIL = "alyahyaibrahim335@gmail.com";
 
 type Repo = {
@@ -69,11 +68,11 @@ type GHUser = {
 };
 
 const SKILLS = [
-  "JavaScript","Typescript","Python", "Java", "C++",
-  "React", "Node.js", "Tailwind CSS",
-  "SQL",  "MongoDB",
-  "Git", "Docker", "Linux",
-  "Problem Solving", "Software Architecture","UI disigner"
+  "JavaScript", "TypeScript", "Python", "Java", "C++",
+  "React", "Node.js", "Next.js", "Tailwind CSS",
+  "SQL", "PostgreSQL", "MongoDB",
+  "Git", "Docker", "Linux", "REST APIs",
+  "Problem Solving", "Software Architecture",
 ];
 
 function CVPage() {
@@ -123,7 +122,7 @@ function CVPage() {
             href={`mailto:${EMAIL}`}
             className="inline-flex items-center gap-2 rounded-full bg-gradient-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:opacity-90 transition"
           >
-            <Mail className="h-4 w-4" /> Contact me
+            <Mail className="h-4 w-4" /> Hire me
           </a>
         </div>
       </header>
@@ -133,7 +132,10 @@ function CVPage() {
         <div className="mx-auto max-w-6xl px-6 pt-24 pb-20 md:pt-32 md:pb-28">
           <div className="grid md:grid-cols-[1fr_auto] gap-12 items-center">
             <div>
-              
+              <div className="inline-flex items-center gap-2 rounded-full border border-border bg-surface/60 px-3 py-1 text-xs text-muted-foreground mb-6">
+                <Sparkles className="h-3 w-3 text-accent" />
+                Available for opportunities
+              </div>
               <h1 className="text-5xl md:text-7xl font-bold leading-[1.05]">
                 Ibrahim <br />
                 <span className="text-gradient">Alyahya</span>
@@ -162,11 +164,15 @@ function CVPage() {
             <div className="hidden md:block">
               <div className="relative">
                 <div className="absolute -inset-6 bg-gradient-primary rounded-full opacity-30 blur-2xl" />
-                <img
-                  src={profilePic}
-                  alt="Ibrahim Alyahya"
-                  className="relative h-56 w-56 rounded-full border-2 border-border object-cover glow"
-                />
+                {profile.data?.avatar_url ? (
+                  <img
+                    src={profile.data.avatar_url}
+                    alt="Ibrahim Alyahya"
+                    className="relative h-56 w-56 rounded-full border-2 border-border object-cover glow"
+                  />
+                ) : (
+                  <div className="relative h-56 w-56 rounded-full border-2 border-border bg-surface" />
+                )}
               </div>
             </div>
           </div>
@@ -191,12 +197,12 @@ function CVPage() {
               database schemas to crafting polished user interfaces.
             </p>
             <p>
-              Currently studying Computer Science at Imam Abdulrahman bin Faisal Univercity  (IAU.cs), I'm passionate about
+              Currently studying Computer Science at FUU (fuu.cs), I'm passionate about
               continuously learning new technologies and building things people actually use.
             </p>
           </div>
           <div className="card-elevated rounded-2xl p-6 space-y-4">
-            <Detail icon={<GraduationCap className="h-4 w-4" />} label="Education" value="IAU — Computer Science" />
+            <Detail icon={<GraduationCap className="h-4 w-4" />} label="Education" value="FUU — Computer Science" />
             <Detail icon={<MapPin className="h-4 w-4" />} label="Location" value={profile.data?.location ?? "Saudi Arabia"} />
             <Detail icon={<Mail className="h-4 w-4" />} label="Email" value={EMAIL} />
             <Detail icon={<Github className="h-4 w-4" />} label="GitHub" value={`@${GITHUB_USERNAME}`} />
