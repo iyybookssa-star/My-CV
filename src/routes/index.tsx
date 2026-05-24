@@ -80,6 +80,9 @@ const SKILLS = [
 ];
 
 function CVPage() {
+  const cvUrl = `${import.meta.env.BASE_URL}documents/Ibrahim_Alyahya_CV.pdf`;
+  const transcriptUrl = `${import.meta.env.BASE_URL}documents/Ibrahim_Alyahya_Transcript.pdf`;
+
   const profile = useQuery({
     queryKey: ["gh-user", GITHUB_USERNAME],
     queryFn: async (): Promise<GHUser> => {
@@ -159,6 +162,14 @@ function CVPage() {
                   className="inline-flex items-center gap-2 rounded-full border border-border bg-surface px-5 py-2.5 text-sm font-medium hover:bg-muted transition"
                 >
                   <Mail className="h-4 w-4" /> {EMAIL}
+                </a>
+                <a
+                  href={cvUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-2 rounded-full border border-border bg-surface px-5 py-2.5 text-sm font-medium hover:bg-muted transition"
+                >
+                  <FileText className="h-4 w-4" /> CV / Resume
                 </a>
               </div>
             </div>
@@ -266,7 +277,7 @@ function CVPage() {
             </div>
             <div className="mt-6 flex gap-3">
               <a
-                href="/documents/Ibrahim_Alyahya_CV.pdf"
+                href={cvUrl}
                 target="_blank"
                 rel="noreferrer"
                 className="flex-1 inline-flex items-center justify-center gap-2 rounded-full border border-border bg-surface px-5 py-2.5 text-sm font-medium hover:bg-muted transition"
@@ -274,7 +285,7 @@ function CVPage() {
                 <Eye className="h-4 w-4" /> View PDF
               </a>
               <a
-                href="/documents/Ibrahim_Alyahya_CV.pdf"
+                href={cvUrl}
                 download="Ibrahim_Alyahya_CV.pdf"
                 className="inline-flex items-center justify-center rounded-full bg-gradient-primary p-2.5 text-primary-foreground hover:opacity-90 transition"
                 title="Download CV"
@@ -298,7 +309,7 @@ function CVPage() {
             </div>
             <div className="mt-6 flex gap-3">
               <a
-                href="/documents/Ibrahim_Alyahya_Transcript.pdf"
+                href={transcriptUrl}
                 target="_blank"
                 rel="noreferrer"
                 className="flex-1 inline-flex items-center justify-center gap-2 rounded-full border border-border bg-surface px-5 py-2.5 text-sm font-medium hover:bg-muted transition"
@@ -306,7 +317,7 @@ function CVPage() {
                 <Eye className="h-4 w-4" /> View PDF
               </a>
               <a
-                href="/documents/Ibrahim_Alyahya_Transcript.pdf"
+                href={transcriptUrl}
                 download="Ibrahim_Alyahya_Transcript.pdf"
                 className="inline-flex items-center justify-center rounded-full bg-gradient-primary p-2.5 text-primary-foreground hover:opacity-90 transition"
                 title="Download Transcript"
