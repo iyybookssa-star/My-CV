@@ -268,7 +268,7 @@ function CVPage() {
                 <div className="h-10 w-10 rounded-xl bg-gradient-primary flex items-center justify-center text-primary-foreground font-semibold">
                   <FileText className="h-5 w-5" />
                 </div>
-                <h3 className="font-display font-semibold text-lg">Curriculum Vitae</h3>
+                <h3 className="font-display font-semibold text-lg">My CV/Resume</h3>
               </div>
               <p className="mt-3 text-sm text-muted-foreground">
                 My professional resume detailing my technical skills, experience, project portfolio, and education.
