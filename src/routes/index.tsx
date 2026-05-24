@@ -139,7 +139,7 @@ function CVPage() {
                 <span className="text-gradient">Alyahya</span>
               </h1>
               <p className="mt-6 text-xl text-muted-foreground max-w-xl">
-                Software engineer building reliable, well-crafted software across the full stack.
+                 A Software engineer with full stack development experience and a CS bachelor from IAU .
               </p>
               <div className="mt-8 flex flex-wrap gap-3">
                 <a
