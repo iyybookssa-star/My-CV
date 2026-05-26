@@ -68,11 +68,11 @@ type GHUser = {
 };
 
 const SKILLS = [
-  "JavaScript", "TypeScript", "Python", "Java", "C++",
+  "JavaScript", "TypeScript", "Python", "Java", "C++", "PHP", "HTML", "CSS", "Assembly",
   "React", "Node.js", "Next.js", "Tailwind CSS",
   "SQL", "PostgreSQL", "MongoDB",
   "Git", "Docker", "Linux", "REST APIs",
-  "Problem Solving", "Software Architecture",
+  "Problem Solving", "Software Architecture", "UI designer", "Technical Report Writing",
 ];
 
 function CVPage() {

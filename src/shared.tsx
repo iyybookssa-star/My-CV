@@ -45,7 +45,7 @@ export type GHUser = {
  * List of languages known and used.
  */
 export const LANGUAGES = [
-  "JavaScript", "Typescript", "Python", "Java", "C++"
+  "JavaScript", "Typescript", "Python", "Java", "C++", "PHP", "HTML", "CSS", "Assembly"
 ];
 
 /**
@@ -53,13 +53,20 @@ export const LANGUAGES = [
  */
 export const TOOLS = [
   "React", "Node.js", "Tailwind CSS", "SQL", "MongoDB",
-  "Git", "Docker", "Linux", "Problem Solving", "Software Architecture", "UI designer"
+  "Git", "Docker", "Linux"
 ];
 
 /**
- * Combined list of all skills (languages + tools) for statistical counters and compatibility.
+ * List of technical / professional skills and methodologies.
  */
-export const SKILLS = [...LANGUAGES, ...TOOLS];
+export const TECHNICAL_SKILLS = [
+  "Problem Solving", "Software Architecture", "UI designer", "Technical Report Writing"
+];
+
+/**
+ * Combined list of all skills (languages + tools + technical skills) for statistical counters and compatibility.
+ */
+export const SKILLS = [...LANGUAGES, ...TOOLS, ...TECHNICAL_SKILLS];
 
 /**
  * React Query hook to fetch the GitHub user profile for the configured username.
