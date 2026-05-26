@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
 import {
@@ -11,6 +12,8 @@ import {
   Briefcase,
   Sparkles,
   MapPin,
+  Menu,
+  X,
 } from "lucide-react";
 
 export const Route = createFileRoute("/")({
@@ -76,6 +79,8 @@ const SKILLS = [
 ];
 
 function CVPage() {
+  const [isOpen, setIsOpen] = useState(false);
+
   const profile = useQuery({
     queryKey: ["gh-user", GITHUB_USERNAME],
     queryFn: async (): Promise<GHUser> => {
@@ -108,7 +113,7 @@ function CVPage() {
       {/* NAV */}
       <header className="sticky top-0 z-40 backdrop-blur-md bg-background/60 border-b border-border">
         <div className="mx-auto max-w-6xl px-6 h-16 flex items-center justify-between">
-          <a href="#top" className="font-display font-bold tracking-tight">
+          <a href="#top" className="font-display font-bold tracking-tight" onClick={() => setIsOpen(false)}>
             IA<span className="text-gradient">.</span>
           </a>
           <nav className="hidden md:flex items-center gap-8 text-sm text-muted-foreground">
@@ -118,13 +123,48 @@ function CVPage() {
             <a href="#github" className="hover:text-foreground transition">GitHub</a>
             <a href="#contact" className="hover:text-foreground transition">Contact</a>
           </nav>
-          <a
-            href={`mailto:${EMAIL}`}
-            className="inline-flex items-center gap-2 rounded-full bg-gradient-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:opacity-90 transition"
+          
+          {/* Desktop Action Button */}
+          <div className="hidden md:block">
+            <a
+              href={`mailto:${EMAIL}`}
+              className="inline-flex items-center gap-2 rounded-full bg-gradient-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:opacity-90 transition"
+            >
+              <Mail className="h-4 w-4" /> Hire me
+            </a>
+          </div>
+
+          {/* Mobile Menu Button */}
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="md:hidden flex items-center justify-center p-2 rounded-lg text-foreground hover:bg-surface border border-transparent hover:border-border transition"
+            aria-label="Toggle menu"
           >
-            <Mail className="h-4 w-4" /> Hire me
-          </a>
+            {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          </button>
         </div>
+
+        {/* Mobile Navigation Dropdown */}
+        {isOpen && (
+          <div className="md:hidden border-b border-border bg-background/95 backdrop-blur-md px-6 py-4 animate-fade-in">
+            <nav className="flex flex-col gap-4 text-base font-medium">
+              <a href="#about" onClick={() => setIsOpen(false)} className="text-muted-foreground hover:text-foreground transition">About</a>
+              <a href="#skills" onClick={() => setIsOpen(false)} className="text-muted-foreground hover:text-foreground transition">Skills</a>
+              <a href="#experience" onClick={() => setIsOpen(false)} className="text-muted-foreground hover:text-foreground transition">Experience</a>
+              <a href="#github" onClick={() => setIsOpen(false)} className="text-muted-foreground hover:text-foreground transition">GitHub</a>
+              <a href="#contact" onClick={() => setIsOpen(false)} className="text-muted-foreground hover:text-foreground transition">Contact</a>
+              
+              <hr className="border-border my-2" />
+              
+              <a
+                href={`mailto:${EMAIL}`}
+                className="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-primary px-4 py-2.5 text-sm font-medium text-primary-foreground hover:opacity-90 transition w-full"
+              >
+                <Mail className="h-4 w-4" /> Hire me
+              </a>
+            </nav>
+          </div>
+        )}
       </header>
 
       {/* HERO */}
@@ -357,7 +397,7 @@ function CVPage() {
       <footer className="border-t border-border mt-20">
         <div className="mx-auto max-w-6xl px-6 py-8 flex flex-col md:flex-row gap-3 items-center justify-between text-sm text-muted-foreground">
           <p>© {new Date().getFullYear()} Ibrahim Alyahya. All rights reserved.</p>
-          <p className="font-mono text-xs">Built with care.</p>
+          <p className="font-mono text-xs">Consider me.</p>
         </div>
       </footer>
     </main>
