@@ -1,10 +1,70 @@
-import { Outlet, createRootRoute, HeadContent } from "@tanstack/react-router";
+import { Outlet, createRootRoute, HeadContent, Link } from "@tanstack/react-router";
+import { Mail } from "lucide-react";
+import { EMAIL } from "../shared";
 
+/**
+ * Root Route configuration using TanStack Router.
+ * Renders the global layout including:
+ * - HTML header metadata (HeadContent)
+ * - Navigation header bar with links highlighting active page routes
+ * - Outlet for matching nested route page contents
+ * - Global footer section
+ */
 export const Route = createRootRoute({
-  component: () => (
+  component: RootLayout,
+});
+
+/**
+ * Global layout component wraps all page views.
+ * It provides responsive design, glassmorphism headers, and sticky navigations.
+ */
+function RootLayout() {
+  return (
     <>
       <HeadContent />
-      <Outlet />
+      <div className="min-h-screen flex flex-col justify-between">
+        <div>
+          {/* Nav Header Section */}
+          <header className="sticky top-0 z-40 backdrop-blur-md bg-background/60 border-b border-border">
+            <div className="mx-auto max-w-6xl px-6 h-16 flex items-center justify-between">
+              {/* Brand Logo Link */}
+              <Link to="/" className="font-display font-bold tracking-tight text-foreground">
+                IA<span className="text-gradient">.</span>
+              </Link>
+              
+              {/* Desktop Navigation Links */}
+              <nav className="hidden md:flex items-center gap-8 text-sm">
+                <Link to="/" activeOptions={{ exact: true }} className="text-muted-foreground hover:text-foreground transition [&.active]:text-accent [&.active]:font-semibold">Home</Link>
+                <Link to="/about" className="text-muted-foreground hover:text-foreground transition [&.active]:text-accent [&.active]:font-semibold">About</Link>
+                <Link to="/skills" className="text-muted-foreground hover:text-foreground transition [&.active]:text-accent [&.active]:font-semibold">Skills</Link>
+                <Link to="/experience" className="text-muted-foreground hover:text-foreground transition [&.active]:text-accent [&.active]:font-semibold">Experience</Link>
+                <Link to="/documents" className="text-muted-foreground hover:text-foreground transition [&.active]:text-accent [&.active]:font-semibold">Documents</Link>
+                <Link to="/github" className="text-muted-foreground hover:text-foreground transition [&.active]:text-accent [&.active]:font-semibold">GitHub</Link>
+                <Link to="/contact" className="text-muted-foreground hover:text-foreground transition [&.active]:text-accent [&.active]:font-semibold">Contact</Link>
+              </nav>
+
+              {/* Action Button: Email Contact */}
+              <a
+                href={`mailto:${EMAIL}`}
+                className="inline-flex items-center gap-2 rounded-full bg-gradient-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:opacity-90 transition"
+              >
+                <Mail className="h-4 w-4" /> Contact me
+              </a>
+            </div>
+          </header>
+
+          {/* Render Active Page Content */}
+          <Outlet />
+        </div>
+
+        {/* Global Footer Section */}
+        <footer className="border-t border-border mt-20">
+          <div className="mx-auto max-w-6xl px-6 py-8 flex flex-col md:flex-row gap-3 items-center justify-between text-sm text-muted-foreground">
+            <p>© {new Date().getFullYear()} Ibrahim Alyahya. All rights reserved.</p>
+            <p className="font-mono text-xs">Built with care.</p>
+          </div>
+        </footer>
+      </div>
     </>
-  ),
-});
+  );
+}
