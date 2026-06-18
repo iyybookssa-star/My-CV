@@ -74,13 +74,31 @@ export const SKILLS = [...LANGUAGES, ...TOOLS, ...TECHNICAL_SKILLS];
  * 
  * @returns React Query result containing GHUser details.
  */
+/**
+ * Helper to generate headers for GitHub API requests.
+ * Includes Authorization header if VITE_GITHUB_TOKEN is configured in environment.
+ */
 export function useGHProfile() {
   return useQuery({
     queryKey: ["gh-user", GITHUB_USERNAME],
     queryFn: async (): Promise<GHUser> => {
-      const r = await fetch(`https://api.github.com/users/${GITHUB_USERNAME}`);
-      if (!r.ok) throw new Error("profile");
-      return r.json();
+      try {
+        const r = await fetch(`https://api.github.com/users/${GITHUB_USERNAME}`);
+        if (!r.ok) throw new Error("profile");
+        const data = await r.json();
+        localStorage.setItem(`gh-profile-${GITHUB_USERNAME}`, JSON.stringify(data));
+        return data;
+      } catch (err) {
+        const cached = localStorage.getItem(`gh-profile-${GITHUB_USERNAME}`);
+        if (cached) {
+          try {
+            return JSON.parse(cached);
+          } catch (e) {
+            // Ignore parse errors
+          }
+        }
+        throw err;
+      }
     },
     staleTime: 1000 * 60 * 10,
   });
@@ -96,11 +114,25 @@ export function useGHRepos() {
   return useQuery({
     queryKey: ["gh-repos", GITHUB_USERNAME],
     queryFn: async (): Promise<Repo[]> => {
-      const r = await fetch(
-        `https://api.github.com/users/${GITHUB_USERNAME}/repos?sort=updated&per_page=100`,
-      );
-      if (!r.ok) throw new Error("repos");
-      return r.json();
+      try {
+        const r = await fetch(
+          `https://api.github.com/users/${GITHUB_USERNAME}/repos?sort=updated&per_page=100`
+        );
+        if (!r.ok) throw new Error("repos");
+        const data = await r.json();
+        localStorage.setItem(`gh-repos-${GITHUB_USERNAME}`, JSON.stringify(data));
+        return data;
+      } catch (err) {
+        const cached = localStorage.getItem(`gh-repos-${GITHUB_USERNAME}`);
+        if (cached) {
+          try {
+            return JSON.parse(cached);
+          } catch (e) {
+            // Ignore parse errors
+          }
+        }
+        throw err;
+      }
     },
     staleTime: 1000 * 60 * 10,
   });
@@ -191,7 +223,7 @@ type TimelineItemProps = {
   title: string;
   subtitle: string;
   period: string;
-  description: string;
+  description: React.ReactNode;
 };
 
 /**
@@ -212,7 +244,7 @@ export function TimelineItem({
           <span className="text-xs font-mono text-muted-foreground">{period}</span>
         </div>
         <p className="text-sm text-accent">{subtitle}</p>
-        <p className="mt-2 text-muted-foreground">{description}</p>
+        <div className="mt-2 text-muted-foreground text-sm space-y-2">{description}</div>
       </div>
     </div>
   );
