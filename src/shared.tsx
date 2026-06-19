@@ -45,7 +45,7 @@ export type GHUser = {
  * List of languages known and used.
  */
 export const LANGUAGES = [
-  "JavaScript", "Typescript", "Python", "Java", "C++", "PHP", "HTML", "CSS", "Assembly"
+  "JavaScript", "Typescript", "Python", "Java", "C++", "PHP", "HTML", "CSS", "C#"
 ];
 
 /**
