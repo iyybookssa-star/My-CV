@@ -71,7 +71,7 @@ type GHUser = {
 };
 
 const SKILLS = [
-  "JavaScript", "TypeScript", "Python", "Java", "C++", "PHP", "HTML", "CSS", "Assembly",
+  "JavaScript", "TypeScript", "Python", "Java", "C++", "PHP", "HTML", "CSS", "C#",
   "React", "Node.js", "Next.js", "Tailwind CSS",
   "SQL", "PostgreSQL", "MongoDB",
   "Git", "Docker", "Linux", "REST APIs",
