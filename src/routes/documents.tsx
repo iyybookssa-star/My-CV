@@ -19,7 +19,7 @@ export const Route = createFileRoute("/documents")({
  */
 function DocumentsPage() {
   // URL pointing to the CV PDF file
-  const cvUrl = `${import.meta.env.BASE_URL}documents/Ibrahim_Alyahya_CV.pdf`;
+  const cvUrl = `${import.meta.env.BASE_URL}documents/Ibrahim_Alyahya_FlowCV_Resume_2026-06-26.pdf`;
 
   // State controls for displaying the degree notice modal
   const [showDegreeNotice, setShowDegreeNotice] = useState(false);
@@ -53,7 +53,7 @@ function DocumentsPage() {
               </a>
               <a
                 href={cvUrl}
-                download="Ibrahim_Alyahya_CV.pdf"
+                download="Ibrahim_Alyahya_FlowCV_Resume_2026-06-26.pdf"
                 className="inline-flex items-center justify-center rounded-full bg-gradient-primary p-2.5 text-primary-foreground hover:opacity-90 transition"
                 title="Download CV"
               >

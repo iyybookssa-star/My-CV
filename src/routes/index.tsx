@@ -24,7 +24,7 @@ export const Route = createFileRoute("/")({
  */
 function HomePage() {
   // Resolved URL to the CV PDF stored inside public assets
-  const cvUrl = `${import.meta.env.BASE_URL}documents/Ibrahim_Alyahya_CV.pdf`;
+  const cvUrl = `${import.meta.env.BASE_URL}documents/Ibrahim_Alyahya_FlowCV_Resume_2026-06-26.pdf`;
   
   // Custom query hook to retrieve GitHub follower and repo metrics
   const profile = useGHProfile();
