@@ -4,48 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Ibrahim Alyahya — Software Engineer</title>
-
-    <!-- ===== Redirect to Vercel deployment ===== -->
-    <!-- TODO: Replace YOUR_VERCEL_URL with your actual Vercel domain -->
-    <meta http-equiv="refresh" content="0; url=https://ibrahimalyahya.com" />
-
-    <script>
-      (function () {
-        var VERCEL_ORIGIN = "https://ibrahimalyahya.com";
-        var REPO_BASE = "/My-CV";
-
-        // Get the current path and strip the GitHub Pages repo prefix
-        var path = window.location.pathname;
-        if (path.indexOf(REPO_BASE) === 0) {
-          path = path.substring(REPO_BASE.length);
-        }
-        // Ensure path starts with /
-        if (!path || path.charAt(0) !== "/") {
-          path = "/" + path;
-        }
-
-        // Preserve query string and hash fragment
-        var destination =
-          VERCEL_ORIGIN +
-          path +
-          window.location.search +
-          window.location.hash;
-
-        // .replace() so the old page is NOT in browser history (no back-button loop)
-        window.location.replace(destination);
-      })();
-    </script>
-    <!-- ========================================= -->
   </head>
   <body>
-    <noscript>
-      <p>
-        This site has moved.
-        <a href="https://ibrahimalyahya.com">
-          Click here to visit the new site.
-        </a>
-      </p>
-    </noscript>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
